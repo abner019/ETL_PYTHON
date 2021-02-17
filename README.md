@@ -1,5 +1,6 @@
 # ETL Python
-> Short blurb about what your product does.
+> ETL Python é um software de código aberto para a communidade, desenvolvido em python. Tem comomo objetivo ser uma ferramenta pratica 
+> de desenvolver ETL (Extraction, Transformation and Load) e de baixo busto. A fim de freelancers e pequenas utilizarem em seus projetos.
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
