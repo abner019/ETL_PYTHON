@@ -48,6 +48,21 @@ Projeto atual não existe interface grafica, apenas o processamento logico do Xm
               #type -> Attributo que diz qual o tipo da instrução ou comando 
               @Text@ -> Conteudo da tag é o codigo que será executado.
 ```
+
+```xml
+<ETL event_name = 'xxab.event.name.demo'>
+	<OBJECT order="0" step_name = 'SELECT_INSERT_STG_DEPARTMENTS'>
+		<SOURCE name='XE_ORIGEM' type="ORACLE">
+			<COMAND type='SQL'>SELECT department_id, department_name, manager_id, location_id FROM DEPARTMENTS</COMAND>
+		</SOURCE>
+		<TARGET name='XE_ORIGEM' type="ORACLE">
+			<COMAND type='SQL'>INSERT INTO STG_DEPARTMENTS (department_id, department_name, manager_id, location_id) VALUES #VALUES#</COMAND>
+		</TARGET>
+	</OBJECT>
+</ETL>
+```
+
+
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
 ## Development setup
