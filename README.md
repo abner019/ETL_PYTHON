@@ -30,23 +30,23 @@ edit autoexec.bat
 
 Projeto atual não existe interface grafica, apenas o processamento logico do Xml, as descrições abaixo descrevem o padrão e a logica do processamento.
 
-  * <ETL> é a Tag root do arquivo
-      #event_name -> Attributo identificador da interface ou job que esta processando
-      * <OBJECT/> é Tag filha, responsavel pelo processamento de cada passo no fluxo da execução
-          #order -> Attributo que diz a ordem de execução 
-          #step_name -> Attributo que identifica o passo que esta em execução 
-          * <SOURCE/> é Tag filha do objeto, responsavel em direcionar a conexão da origem de dados
-            #name -> Attributo que diz a origem dos dados
-            #type -> Attributo que diz qual a tecnologia
-            * <COMAND/> é tag filha do source, responsavel por dizer o tipo do comando a ser executado e o codigo do comando
-              #type -> Attributo que diz qual o tipo da instrução ou comando 
-              @Text@ -> Conteudo da tag é o codigo que será executado.  
-          * <TARGET/> é Tag filha do objeto, responsavel em direcionar a conexão da destino de dados
-            #name -> Attributo que diz a origem dos dados
-            #type -> Attributo que diz qual a tecnologia
-            * <COMAND/> é tag filha do TARGET, responsavel por dizer o tipo do comando a ser executado e o codigo do comando
-              #type -> Attributo que diz qual o tipo da instrução ou comando 
-              @Text@ -> Conteudo da tag é o codigo que será executado.
+  >* <ETL/> é a Tag root do arquivo
+  >    #event_name -> Attributo identificador da interface ou job que esta processando
+  >    * <OBJECT/> é Tag filha, responsavel pelo processamento de cada passo no fluxo da execução
+  >        #order -> Attributo que diz a ordem de execução 
+  >        #step_name -> Attributo que identifica o passo que esta em execução 
+  >        * <SOURCE/> é Tag filha do objeto, responsavel em direcionar a conexão da origem de dados
+  >          #name -> Attributo que diz a origem dos dados
+  >          #type -> Attributo que diz qual a tecnologia
+  >          * <COMAND/> é tag filha do source, responsavel por dizer o tipo do comando a ser executado e o codigo do comando
+  >            #type -> Attributo que diz qual o tipo da instrução ou comando 
+  >            @Text@ -> Conteudo da tag é o codigo que será executado.  
+  >        * <TARGET/> é Tag filha do objeto, responsavel em direcionar a conexão da destino de dados
+  >          #name -> Attributo que diz a origem dos dados
+  >          #type -> Attributo que diz qual a tecnologia
+  >          * <COMAND/> é tag filha do TARGET, responsavel por dizer o tipo do comando a ser executado e o codigo do comando
+  >            #type -> Attributo que diz qual o tipo da instrução ou comando 
+  >           @Text@ -> Conteudo da tag é o codigo que será executado.
 
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
