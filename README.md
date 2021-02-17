@@ -30,7 +30,7 @@ edit autoexec.bat
 
 Projeto atual não existe interface grafica, apenas o processamento logico do Xml, as descrições abaixo descrevem o padrão e a logica do processamento.
 
-  * <ETL/> é a Tag root do arquivo
+  * <ETL> é a Tag root do arquivo
       #event_name -> Attributo identificador da interface ou job que esta processando
       * <OBJECT/> é Tag filha, responsavel pelo processamento de cada passo no fluxo da execução
           #order -> Attributo que diz a ordem de execução 
@@ -46,7 +46,7 @@ Projeto atual não existe interface grafica, apenas o processamento logico do Xm
             #type -> Attributo que diz qual a tecnologia
             * <COMAND/> é tag filha do TARGET, responsavel por dizer o tipo do comando a ser executado e o codigo do comando
               #type -> Attributo que diz qual o tipo da instrução ou comando 
-              @Text@ -> Conteudo da tag é o codigo que será executado.  
+              @Text@ -> Conteudo da tag é o codigo que será executado.
 
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
