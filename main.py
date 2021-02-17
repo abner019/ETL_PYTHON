@@ -11,8 +11,5 @@ import xmlProcess;
 
 
 if __name__ == '__main__':
-
-    #exe03.mainProc();
-    #exe04.mainProc();
     xmlProcess.main();
-
+    print("end");
