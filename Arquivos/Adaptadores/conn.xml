@@ -1,0 +1,5 @@
+<connections>
+	<oracle>
+		<datasource name="XE" host="localhost" port="1521	" service="xe" userName="TRITLOCAL" pwd="TRITLOCAL"/>
+	</oracle>
+</connections>
