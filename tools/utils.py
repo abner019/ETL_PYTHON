@@ -1,6 +1,5 @@
 import xml.dom.minidom;
 import base64;
-import cx_Oracle;
 import json
 from types import SimpleNamespace
 
