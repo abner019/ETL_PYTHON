@@ -15,4 +15,4 @@ if __name__ == '__main__':
 #    conn = adapOracle.createConnect();
 #    print(conn);
 
-    ctrl.load("xxab_etl_load_departments.xml");
+    ctrl.intefaceMainProcess("xxab_etl_load_departments.xml");

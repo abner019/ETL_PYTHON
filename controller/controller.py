@@ -1,5 +1,12 @@
 import xml.dom.minidom;
 import tools.utils as utils;
+import cx_Oracle;
+
+
+# Iniciar componentes
+def init():
+    cx_Oracle.init_oracle_client(lib_dir=r"C:\oraclexe\app\oracle\product\11.2.0\server\bin");
+
 
 def loadInterface(intefaceFile):
     #montando string do caminho + arquivo
@@ -64,7 +71,7 @@ def loadInterface(intefaceFile):
                 l_targetCommand = "";
 
         etlObj = {
-            "order": l_order,
+            "order": int(l_order),
             "step_name": l_step_name,
             "source": {
                 "name": l_sourceName,
@@ -86,5 +93,14 @@ def loadInterface(intefaceFile):
         etlList.append(etlObj)
     return etlList;
 
-def ExecuteInterface(etlList):
-    pass;
+def ExecuteInterface(obj):
+    etlList = utils.getOrderInterfaceProcess(obj);
+
+
+def intefaceMainProcess(name):
+    #
+    init();
+    #
+    etlList = loadInterface(name);
+    #
+    ExecuteInterface(etlList);

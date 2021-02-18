@@ -2,7 +2,6 @@ import cx_Oracle;
 import xml.dom.minidom;
 
 class AdaptadorOracle:
-    cx_Oracle.init_oracle_client(lib_dir=r"C:\oraclexe\app\oracle\product\11.2.0\server\bin");
 
     def __int__(self):
         self.host = None;

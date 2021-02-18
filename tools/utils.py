@@ -37,4 +37,11 @@ def getText(nodelist):
             # Recursive
             rc.append(getText(node.childNodes))
     return ''.join(rc)
-
+#Recupera a chave para ordernar no def getOrderInterfaceProcess
+def getOrder(obj):
+    return obj['order'];
+#Ordena
+def getOrderInterfaceProcess(obj):
+    my_object = obj;
+    my_object.sort(key=getOrder);
+    return my_object;
