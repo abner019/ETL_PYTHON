@@ -120,7 +120,7 @@ def ExecuteInterface(obj):
         if(conv.source.comand.type == "SQL" and conv.target.comand.type =="SQL"):
             op.SqlToSql(conv);
         else:
-            print("else");
+            pass;
 
 
 def endOf():

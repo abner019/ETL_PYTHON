@@ -3,7 +3,6 @@ import tools.utils as utils
 
 def SqlToSql(obj):
 
-    print(obj.source.type);
     g_rs = "";
     #Source
     if ( obj.source.type == "ORACLE"):
@@ -16,7 +15,6 @@ def SqlToSql(obj):
 
     if (obj.target.type == "ORACLE"):
         l_sql = utils.decode(obj.target.comand.text);
-        print(g_rs);
         executeOracleBlockComand(l_sql, g_rs)
 
 def SqlToFile(obj):
@@ -40,7 +38,6 @@ def executeOracleSelectComand(command):
     conn.setDataSource("XE");
     connection = conn.createConnect();
     cur = connection.cursor();
-
     cur.execute(command);
     rs = [];
     for result in cur:
@@ -58,3 +55,5 @@ def executeOracleBlockComand(command,dataBinding):
     cur.executemany(command, dataBinding );
     connection.commit();
     connection.close();
+
+

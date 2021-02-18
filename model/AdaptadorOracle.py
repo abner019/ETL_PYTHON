@@ -22,7 +22,7 @@ class AdaptadorOracle:
             l_dataSourcet = l_Olement.getElementsByTagName("datasource");
             # fazendo loop na tag dataSource
             for element in l_dataSourcet:
-                print(element);
+
                 # Procurando propriedade
                 if element.getAttribute('name') == dataSource:
                     self.host = element.getAttribute('host');
@@ -33,7 +33,7 @@ class AdaptadorOracle:
 
     def createConnect(self):
         l_connectionString = self.userName + "/" +  self.pwd + "@" + self.host + ":" + self.port + "/" + self.service;
-        print(l_connectionString);
+
         #connection = cx_Oracle.connect("TRITLOCAL/TRITLOCAL@localhost:1521/xe");
         connection = cx_Oracle.connect(l_connectionString);
         return connection;
