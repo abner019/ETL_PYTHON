@@ -2,9 +2,14 @@ import xml.dom.minidom;
 import base64;
 import json
 from types import SimpleNamespace
+import time
+import random
+import socket
+import hashlib
+from uuid import uuid4;
 
 def convJsonToObj(pJson):
-    print(pJson);
+    #print(pJson);
 
     data = str(pJson).replace("'",'"');
 
@@ -45,3 +50,8 @@ def getOrderInterfaceProcess(obj):
     my_object = obj;
     my_object.sort(key=getOrder);
     return my_object;
+
+def getUniqueId():
+    unique_id = str(uuid4());
+
+    return unique_id.replace("-","_") [0:10];

@@ -1,7 +1,7 @@
 import xml.dom.minidom;
 import tools.utils as utils;
 import cx_Oracle;
-
+import controller.operations as op;
 
 # Iniciar componentes
 def init():
@@ -13,13 +13,27 @@ def loadInterface(intefaceFile):
     l_intefaceFile = "./Arquivos/interfaces/" + intefaceFile;
     #parse do documento
     etlDoc = xml.dom.minidom.parse(l_intefaceFile);
+
+    l_eventName = intefaceFile.replace(".xml","");
+    #obj
+    etlObj = {};
     #list
     etlList = [];
     #buscando tag object (N) vezes
     objectElement = etlDoc.getElementsByTagName("OBJECT");
     # buscando tag object (N) vezes
+
     for l_object in objectElement:
-        print(l_object);
+
+        l_sourceName = "";
+        l_sourceType = "";
+        l_sourceCommType = "";
+        l_sourceCommand = "";
+        l_targetName = "";
+        l_targetType = "";
+        l_targetCommType = "";
+        l_targetCommand = "";
+
         #buscando atrributo order
         l_order = l_object.getAttribute("order");
         # buscando atrributo step_name
@@ -71,6 +85,7 @@ def loadInterface(intefaceFile):
                 l_targetCommand = "";
 
         etlObj = {
+            "eventName": l_eventName,
             "order": int(l_order),
             "step_name": l_step_name,
             "source": {
@@ -90,12 +105,26 @@ def loadInterface(intefaceFile):
                 }
             }
         };
+
         etlList.append(etlObj)
+
     return etlList;
 
 def ExecuteInterface(obj):
     etlList = utils.getOrderInterfaceProcess(obj);
+    l_index = 0;
+    for l_list in etlList:
+        l_index += 1;
+        conv = utils.convJsonToObj(l_list);
 
+        if(conv.source.comand.type == "SQL" and conv.target.comand.type =="SQL"):
+            op.SqlToSql(conv);
+        else:
+            print("else");
+
+
+def endOf():
+    pass;
 
 def intefaceMainProcess(name):
     #
