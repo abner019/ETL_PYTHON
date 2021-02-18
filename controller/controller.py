@@ -1,11 +1,13 @@
 import xml.dom.minidom;
 import tools.utils as utils;
 
-def load(intefaceFile):
+def loadInterface(intefaceFile):
     #montando string do caminho + arquivo
     l_intefaceFile = "./Arquivos/interfaces/" + intefaceFile;
     #parse do documento
     etlDoc = xml.dom.minidom.parse(l_intefaceFile);
+    #list
+    etlList = [];
     #buscando tag object (N) vezes
     objectElement = etlDoc.getElementsByTagName("OBJECT");
     # buscando tag object (N) vezes
@@ -38,16 +40,51 @@ def load(intefaceFile):
                 l_sourceCommType = "";
                 l_sourceCommand = "";
                 pass;
-    etlObj = {
-        "order": l_order,
-        "step_name": l_step_name,
-        "source": {
-            "name": l_sourceName,
-            "type": l_sourceType,
-            "comand": {
-                "type": l_sourceCommType,
-                "text": l_sourceCommand
+
+        targetObject = l_object.getElementsByTagName("TARGET");
+        for l_target in targetObject:
+            try:
+
+                ### Buscando Attribute name da Tag TARGET
+                l_targetName = l_target.getAttribute("name");
+                ### Buscando Attribute type da Tag TARGET
+                l_targetType = l_target.getAttribute("type");
+                ### Buscando Tag COMAND
+                ComandSourceElement = l_target.getElementsByTagName("COMAND");
+
+                for l_ComandSourceElement in ComandSourceElement:
+                    ### Buscando Attribute type da Tag COMAND
+                    l_targetCommType = l_ComandSourceElement.getAttribute("type");
+                    ### Buscando Conteudo Tag COMAND
+                    l_targetCommand = utils.encode(utils.getText(l_ComandSourceElement.childNodes));
+            except IndexError:
+                l_targetName = "";
+                l_targetType = "";
+                l_targetCommType = "";
+                l_targetCommand = "";
+
+        etlObj = {
+            "order": l_order,
+            "step_name": l_step_name,
+            "source": {
+                "name": l_sourceName,
+                "type": l_sourceType,
+                "comand": {
+                    "type": l_sourceCommType,
+                    "text": l_sourceCommand
+                }
+            },
+            "target": {
+                "name": l_targetName,
+                "type": l_targetType,
+                "comand": {
+                    "type": l_targetCommType,
+                    "text": l_targetCommand
+                }
             }
-        }
-    };
-    print(etlObj);
+        };
+        etlList.append(etlObj)
+    return etlList;
+
+def ExecuteInterface(etlList):
+    pass;
