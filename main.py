@@ -8,11 +8,5 @@ import model.AdaptadorOracle as oracle;
 import controller.controller as ctrl;
 
 if __name__ == '__main__':
-    #xmlProcess.main();
-
-#    adapOracle = oracle.AdaptadorOracle();
-#    adapOracle.setDataSource(dataSource="XE");
-#    conn = adapOracle.createConnect();
-#    print(conn);
 
     ctrl.intefaceMainProcess("xxab_etl_load_departments.xml");

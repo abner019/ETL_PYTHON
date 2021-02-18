@@ -11,11 +11,13 @@ def SqlToSql(obj):
 
        #l_tmp_table = ("TMP" + utils.getUniqueId() + str(obj.order) ).upper();
         #l_sql = "CREATE TABLE " + l_tmp_table + " as  SELECT * FROM (" + l_sql + ") "
-        g_rs =  executeOracleSelectComand(l_sql);
+        l_dataSource = obj.source.name;
+        g_rs =  executeOracleSelectComand(l_dataSource,l_sql);
 
     if (obj.target.type == "ORACLE"):
         l_sql = utils.decode(obj.target.comand.text);
-        executeOracleBlockComand(l_sql, g_rs)
+        l_dataSource = obj.target.name;
+        executeOracleBlockComand(l_dataSource, l_sql, g_rs)
 
 def SqlToFile(obj):
     pass;
@@ -33,9 +35,9 @@ def FileToFile(pbj):
 
 
 
-def executeOracleSelectComand(command):
+def executeOracleSelectComand(dataSource, command):
     conn = oracle.AdaptadorOracle();
-    conn.setDataSource("XE");
+    conn.setDataSource(dataSource);
     connection = conn.createConnect();
     cur = connection.cursor();
     cur.execute(command);
@@ -47,7 +49,7 @@ def executeOracleSelectComand(command):
     connection.close();
     return rs;
 
-def executeOracleBlockComand(command,dataBinding):
+def executeOracleBlockComand(dataSource, command,dataBinding):
     conn = oracle.AdaptadorOracle();
     conn.setDataSource("XE");
     connection = conn.createConnect();
