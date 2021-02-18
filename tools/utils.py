@@ -20,7 +20,6 @@ def encode(string):
 
     return base64_bytes.decode('utf-8');
 
-
 def decode(string):
     base64_message = string
     base64_bytes = base64_message.encode('utf-8')
