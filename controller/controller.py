@@ -1,7 +1,7 @@
 import xml.dom.minidom;
 import tools.utils as utils;
 import cx_Oracle;
-import controller.operations as op;
+import controller.Mapping as op;
 
 # Iniciar componentes
 def init():
