@@ -1,6 +1,8 @@
 import cx_Oracle;
 import xml.dom.minidom;
 
+
+
 class AdaptadorOracle:
 
     def __int__(self):

@@ -40,10 +40,17 @@ def SqlToFile(obj):
         l_fileName = obj.target.comand.name
         #prefixo que o arquivo vai ser gerado
         l_prefix = obj.target.comand.prefix
+        #Busca demilitador do arquivo
+        l_delimiter = obj.target.comand.delimiter
         #instancia objeto
         fl = file.AdaptadorFile();
         # Cria arquivo
-        fl.createFile(l_dataSource, l_fileName,l_prefix, g_rs);
+
+        print("delimitador: " + l_delimiter);
+
+        print(obj);
+
+        fl.createFile(l_dataSource, l_fileName,l_prefix, l_delimiter ,  g_rs);
 
 
 

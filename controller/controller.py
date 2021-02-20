@@ -77,17 +77,19 @@ def loadInterface(intefaceFile):
                 ### Buscando Attribute type da Tag TARGET
                 l_targetType = l_target.getAttribute("type");
                 ### Buscando Tag COMAND
-                ComandSourceElement = l_target.getElementsByTagName("COMAND");
+                ComandTargetElement = l_target.getElementsByTagName("COMAND");
 
-                for l_ComandSourceElement in ComandSourceElement:
+                for l_ComandTargetElement in ComandTargetElement:
                     ### Buscando Attribute name da Tag COMAND
-                    l_targetCommName = l_ComandSourceElement.getAttribute("name");
+                    l_targetCommName = l_ComandTargetElement.getAttribute("name");
                     ### Buscando Attribute name da Tag COMAND
-                    l_TargetCommPrefix = l_ComandSourceElement.getAttribute("prefix");
+                    l_TargetCommPrefix = l_ComandTargetElement.getAttribute("prefix");
                     ### Buscando Attribute type da Tag COMAND
-                    l_targetCommType = l_ComandSourceElement.getAttribute("type");
+                    l_targetCommType = l_ComandTargetElement.getAttribute("type");
+                    ### Buscando Attribute l_delimiter da Tag COMAND
+                    l_TargetDelimiter = l_ComandTargetElement.getAttribute("delimiter");
                     ### Buscando Conteudo Tag COMAND
-                    l_targetCommand = utils.encode(utils.getText(l_ComandSourceElement.childNodes));
+                    l_targetCommand = utils.encode(utils.getText(l_ComandTargetElement.childNodes));
             except IndexError:
                 l_targetName = "";
                 l_TargetCommPrefix = "";
@@ -95,6 +97,7 @@ def loadInterface(intefaceFile):
                 l_targetCommType = "";
                 l_targetCommand = "";
                 l_targetCommName = ""
+                l_TargetDelimiter = ""
 
         etlObj = {
             "eventName": l_eventName,
@@ -116,6 +119,7 @@ def loadInterface(intefaceFile):
                 "comand": {
                     "name": l_targetCommName,
                     "prefix": l_TargetCommPrefix,
+                    "delimiter": l_TargetDelimiter,
                     "type": l_targetCommType,
                     "text": l_targetCommand
                 }

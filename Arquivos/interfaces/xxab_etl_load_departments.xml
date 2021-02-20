@@ -12,7 +12,7 @@
 			<COMAND  type='SQL'>SELECT department_id, department_name, manager_id, location_id FROM STG_DEPARTMENTS</COMAND>
 		</SOURCE>
 		<TARGET name='FILE_ADAPTER_LOCAL_XE' type="FILE">
-			<COMAND type='FILE' name = "FILE_STAGE" prefix="txt"/>
+			<COMAND type='FILE' name = "FILE_STAGE" prefix="txt" delimiter=";"/>
 		</TARGET>
 	</OBJECT>	
 </ETL>
