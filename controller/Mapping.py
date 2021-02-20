@@ -1,6 +1,7 @@
 import model.AdaptadorOracle as oracle;
+import model.AdaptadorFile as file;
 import tools.utils as utils
-import csv;
+
 
 def SqlToSql(obj):
 
@@ -33,13 +34,16 @@ def SqlToFile(obj):
         print(g_rs);
 
     if (obj.target.type == "FILE"):
-        #conta quantos itens tem dentro da tupla
-        l_countIndex = len(g_rs[0]);
-        with open('./Arquivos/files_dir/temp/some.csv', 'w', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerows(g_rs)
-
-
+        #Pega o data source para saber o local do arquivo parametrizado
+        l_dataSource = obj.target.name
+        #Nome do arquivo que vai ser gerado no diretorio
+        l_fileName = obj.target.comand.name
+        #prefixo que o arquivo vai ser gerado
+        l_prefix = obj.target.comand.prefix
+        #instancia objeto
+        fl = file.AdaptadorFile();
+        # Cria arquivo
+        fl.createFile(l_dataSource, l_fileName,l_prefix, g_rs);
 
 
 
@@ -72,7 +76,7 @@ def executeOracleSelectComand(dataSource, command):
 
 def executeOracleBlockComand(dataSource, command,dataBinding):
     conn = oracle.AdaptadorOracle();
-    conn.setDataSource("XE");
+    conn.setDataSource(dataSource);
     connection = conn.createConnect();
     cur = connection.cursor();
     cur.executemany(command, dataBinding );

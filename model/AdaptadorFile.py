@@ -1,12 +1,10 @@
 import xml.dom.minidom;
-
+import csv;
 class AdaptadorFile:
     def __init__(self):
-        self.path = "";
+        self.path = None;
 
-
-
-    def setFileDataSource(self,datasource):
+    def createFile(self,datasource,fileName , prefix,obj):
         #recuperando arquivo de conexões
         connRepo = xml.dom.minidom.parse("./Arquivos/Adaptadores/conn.xml");
         #recuperando tag oracle do arquivo
@@ -19,7 +17,7 @@ class AdaptadorFile:
             for element in l_dataSourcet:
                 if element.getAttribute('name') == datasource:
                     self.path = element.getAttribute('path');
-
-
-    def getPath(self):
-        return self.path;
+        if self.path != None:
+            with open(self.path + fileName+ "." + prefix , 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerows(obj);

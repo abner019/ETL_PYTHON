@@ -51,13 +51,19 @@ def loadInterface(intefaceFile):
                 ComandSourceElement = l_source.getElementsByTagName("COMAND");
 
                 for l_ComandSourceElement in ComandSourceElement:
+                    ### Buscando Attribute name da Tag COMAND
+                    l_sourceCommName = l_ComandSourceElement.getAttribute("name");
+                    ### Buscando Attribute prefix da Tag COMAND
+                    l_sourceCommPrefix = l_ComandSourceElement.getAttribute("prefix");
                     ### Buscando Attribute type da Tag COMAND
                     l_sourceCommType = l_ComandSourceElement.getAttribute("type");
                     ### Buscando Conteudo Tag COMAND
                     l_sourceCommand = utils.encode(utils.getText(l_ComandSourceElement.childNodes));
             except IndexError:
                 l_sourceName = "";
+                l_sourceCommPrefix = "";
                 l_sourceType = "";
+                l_sourceCommName = ""
                 l_sourceCommType = "";
                 l_sourceCommand = "";
                 pass;
@@ -74,15 +80,21 @@ def loadInterface(intefaceFile):
                 ComandSourceElement = l_target.getElementsByTagName("COMAND");
 
                 for l_ComandSourceElement in ComandSourceElement:
+                    ### Buscando Attribute name da Tag COMAND
+                    l_targetCommName = l_ComandSourceElement.getAttribute("name");
+                    ### Buscando Attribute name da Tag COMAND
+                    l_TargetCommPrefix = l_ComandSourceElement.getAttribute("prefix");
                     ### Buscando Attribute type da Tag COMAND
                     l_targetCommType = l_ComandSourceElement.getAttribute("type");
                     ### Buscando Conteudo Tag COMAND
                     l_targetCommand = utils.encode(utils.getText(l_ComandSourceElement.childNodes));
             except IndexError:
                 l_targetName = "";
+                l_TargetCommPrefix = "";
                 l_targetType = "";
                 l_targetCommType = "";
                 l_targetCommand = "";
+                l_targetCommName = ""
 
         etlObj = {
             "eventName": l_eventName,
@@ -92,6 +104,8 @@ def loadInterface(intefaceFile):
                 "name": l_sourceName,
                 "type": l_sourceType,
                 "comand": {
+                    "name": l_sourceCommName,
+                    "prefix" : l_sourceCommPrefix,
                     "type": l_sourceCommType,
                     "text": l_sourceCommand
                 }
@@ -100,6 +114,8 @@ def loadInterface(intefaceFile):
                 "name": l_targetName,
                 "type": l_targetType,
                 "comand": {
+                    "name": l_targetCommName,
+                    "prefix": l_TargetCommPrefix,
                     "type": l_targetCommType,
                     "text": l_targetCommand
                 }
