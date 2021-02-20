@@ -2,4 +2,7 @@
 	<oracle>
 		<datasource name="XE" host="localhost" port="1521	" service="xe" userName="TRITLOCAL" pwd="TRITLOCAL"/>
 	</oracle>
+	<file>
+		<datasource name="FILE_ADAPTER_LOCAL_XE" path="./Arquivos/files_dir/temp/" />
+	</file>	
 </connections>

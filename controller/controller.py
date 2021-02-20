@@ -119,8 +119,11 @@ def ExecuteInterface(obj):
 
         if(conv.source.comand.type == "SQL" and conv.target.comand.type =="SQL"):
             op.SqlToSql(conv);
+        elif(conv.source.comand.type == "SQL" and conv.target.comand.type == "FILE") :
+            op.SqlToFile(conv);
         else:
-            pass;
+            print(conv);
+            print("pass");
 
 
 def endOf():
@@ -133,3 +136,5 @@ def intefaceMainProcess(name):
     etlList = loadInterface(name);
     #
     ExecuteInterface(etlList);
+
+

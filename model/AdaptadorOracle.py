@@ -38,4 +38,4 @@ class AdaptadorOracle:
         connection = cx_Oracle.connect(l_connectionString);
         return connection;
 
-
+    
