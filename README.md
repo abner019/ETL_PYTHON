@@ -78,6 +78,7 @@ npm test
 ## Release History
 
 * 0.0.1
+    * Criação do adaptador de arquivos local
     * Criação do adaptador de banco de dados Oracle
     * Criação do Interpretador arquivo XML 
     * Inicio do Projeto
