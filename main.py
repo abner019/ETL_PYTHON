@@ -7,4 +7,7 @@ import controller.controller as ctrl;
 
 if __name__ == '__main__':
 
-    ctrl.intefaceMainProcess("xxab_etl_load_departments.xml");
+ #   ctrl.intefaceMainProcess("xxab_etl_load_departments.xml");
+    exec.job("init.xml");
+
+

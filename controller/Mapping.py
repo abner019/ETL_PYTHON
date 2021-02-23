@@ -26,7 +26,6 @@ def SqlToFile(obj):
     if ( obj.source.type == "ORACLE"):
         #Pega query que esta em base 64, faz decode
         l_sql = utils.decode(obj.source.comand.text);
-
        #l_tmp_table = ("TMP" + utils.getUniqueId() + str(obj.order) ).upper();
         #l_sql = "CREATE TABLE " + l_tmp_table + " as  SELECT * FROM (" + l_sql + ") "
         l_dataSource = obj.source.name;
@@ -34,6 +33,7 @@ def SqlToFile(obj):
         print(g_rs);
 
     if (obj.target.type == "FILE"):
+
         #Pega o data source para saber o local do arquivo parametrizado
         l_dataSource = obj.target.name
         #Nome do arquivo que vai ser gerado no diretorio
@@ -45,11 +45,6 @@ def SqlToFile(obj):
         #instancia objeto
         fl = file.AdaptadorFile();
         # Cria arquivo
-
-        print("delimitador: " + l_delimiter);
-
-        print(obj);
-
         fl.createFile(l_dataSource, l_fileName,l_prefix, l_delimiter ,  g_rs);
 
 
