@@ -10,7 +10,7 @@ pipeline {
 
     stage('SendQA') {
       steps {
-        input(message: 'SendTo QA', ok: 'Approve')
+        input(message: 'SendTo QA', ok: 'Approve', id: '1')
       }
     }
 
