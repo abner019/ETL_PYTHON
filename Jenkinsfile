@@ -4,7 +4,8 @@ pipeline {
     stage('Pull') {
       steps {
         git(url: 'https://github.com/abner019/ETL_PYTHON.git', changelog: true)
-        sh 'cp . /data'
+        sh '''cd /data
+ls -l'''
       }
     }
 
