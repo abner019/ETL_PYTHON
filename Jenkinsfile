@@ -8,6 +8,12 @@ pipeline {
       }
     }
 
+    stage('SendQA') {
+      steps {
+        input(message: 'SendTo QA', ok: 'Approve')
+      }
+    }
+
   }
   environment {
     ENV = 'DEV'
