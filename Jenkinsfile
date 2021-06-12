@@ -8,8 +8,6 @@ pipeline {
       }
     }
 
-    stage('SendQA') {
-      {
     }
 
   }
