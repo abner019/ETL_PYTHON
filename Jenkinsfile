@@ -8,11 +8,14 @@ pipeline {
       }
     }
 
-    
+    stage('') {
+      steps {
+        input(message: 'QA?', id: '2', submitter: 'XXSYB', submitterParameter: 'SSUB')
+      }
+    }
 
   }
   environment {
     ENV = 'DEV'
   }
 }
- 
