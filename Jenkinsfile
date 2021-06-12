@@ -10,7 +10,10 @@ pipeline {
 
     stage('') {
       steps {
-        input(message: 'QA?', id: '2', submitter: 'XXSYB', submitterParameter: 'SSUB')
+        script {
+          env.TAG_ON_DOCKER_HUB = input message: 'User input required',
+              parameters: [choice(name: 'Tag on Docker Hub', choices: 'no\nyes', description: 'Choose "yes" if you want to deploy this build')]
+        }
       }
     }
 
