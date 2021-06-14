@@ -16,7 +16,31 @@ pipeline {
 
     stage('Aprovado em Dev?') {
       steps {
-        input(message: 'Avançar', ok: 'Aprovado')
+        input(message: 'AvanÃ§ar', ok: 'Aprovado')
+      }
+    }
+
+    stage('Deploy_qa') {
+      steps {
+        echo 'Publicando QA'
+      }
+    }
+
+    stage('Aprovado QA?') {
+      steps {
+        input(message: 'Aprovado?', ok: 'Aprovado')
+      }
+    }
+
+    stage('Liberar Produção?') {
+      steps {
+        echo 'xx'
+      }
+    }
+
+    stage('Deploy_Produção') {
+      steps {
+        echo 'Deploye Prod'
       }
     }
 
